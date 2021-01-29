@@ -1,5 +1,5 @@
 public class AccountListController {
-    //test3333334444444new5new6
+    //test3333334444444
     @auraEnabled
     public static List<Account> getAccounts(){
         return null;
