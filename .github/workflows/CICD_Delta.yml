@@ -39,8 +39,8 @@ jobs:
            #git checkout -b pr
            #git --no-pager diff --name-status pr origin/master
            sgd --to pr --from origin/master --repo . --output .
-           cat package/package.xml    
+           cat package/package.xml  
+      - name: Convert Metadata
+        run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
       - name: Deploying Metadata
-        uses: forcedotcom/salesforcedx-actions@master
-        with:
-          args: force:source:deploy -x package/package.xml
+        run: sfdx force:mdapi:deploy --deploydir=convert -w 30
