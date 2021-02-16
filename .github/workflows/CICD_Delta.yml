@@ -34,13 +34,11 @@ jobs:
            sudo npm install sfdx-git-delta@latest -g           
            #git config --global user.email "siddharthvarshneya@gmail.com"
            #git config --global user.name "SiddharthVarshneya "
-           #git commit --allow-empty -n -m "Initial commit"
-           #git diff Head Head^ > mypatch
-           #cat mypatch
-           #git checkout master
-           #git reflog > headshist
-           #cat headshist
-           sgd --to HEAD --from HEAD^ --repo . --output .
+           #git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+           #git fetch --all
+           #git checkout -b pr
+           #git --no-pager diff --name-status pr origin/master
+           sgd --to pr --from origin/master --repo . --output .
            cat package/package.xml    
       - name: Deploying Metadata
         uses: forcedotcom/salesforcedx-actions@master
