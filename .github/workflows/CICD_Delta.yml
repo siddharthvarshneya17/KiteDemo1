@@ -43,7 +43,7 @@ jobs:
            #git checkout master
            #git reflog > headshist
            #cat headshist
-           git checkut -pr
+           git checkout -pr
            git --no-pager diff --name-status pr origin/master
            sgd --to pr --from origin/master --repo . --output .
            cat package/package.xml    
