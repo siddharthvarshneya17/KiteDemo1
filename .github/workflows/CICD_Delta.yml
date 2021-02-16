@@ -35,7 +35,7 @@ jobs:
         run: |  
            sudo npm install sfdx-git-delta@latest -g
            git checkout -b pr          
-           git --no-pager diff --name-status pr  origin/Staging
+           git --no-pager diff --name-status pr Staging
            sgd --to pr  --from origin/Staging --repo . --output .
            echo "--- package.xml generated with added and modified metadata ---"
            cat package/package.xml   
