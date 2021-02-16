@@ -26,11 +26,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Decrypting Server Key
         shell: bash
-        run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K ${{ secrets.Deepika_FORCE_DECRYPTION_KEY }} -iv ${{ secrets.Deepika_FORCE_DECRYPTION_IV }}
+        run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K ${{ secrets.DECRYPTION_KEY }} -iv ${{ secrets.DECRYPTION_IV }}
       - name: Authorizing Org
         uses: forcedotcom/salesforcedx-actions@master
         with:
-            args: force:auth:jwt:grant --clientid ${{ secrets.DEEPIKA_FORCE_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.DEEPIKA_FORCE_USER_NAME }} --setdefaultusername
+            args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername
       - name: "Install App and Create Delta"   
         run: |  
            #npm install sfdx-cli 
