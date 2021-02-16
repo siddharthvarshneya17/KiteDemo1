@@ -2,7 +2,7 @@ public class AccountListController {
     //test 1
     @auraEnabled
     public static List<Account> getAccounts(){
-        //yeysnew
+        //yeysnew test1
         return null;
     }
 }
