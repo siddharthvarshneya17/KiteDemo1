@@ -6,7 +6,7 @@ name: CI_Delta
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ staging ]
+    branches: [ Staging ]
   # pull_request:
    #  branches: [ master ]
 
@@ -33,10 +33,12 @@ jobs:
             args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername
       - name: "Install App and Create Delta"   
         run: |  
-           npm install sfdx-git-delta@latest -g
+           sudo npm install sfdx-git-delta@latest -g
+           git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+           git fetch --all
            git checkout -b pr          
-           git --no-pager diff --name-status pr  origin/staging
-           sgd --to pr  --from origin/staging --repo . --output .
+           git --no-pager diff --name-status pr origin/Staging
+           sgd --to pr  --from origin/Staging --repo . --output .
            echo "--- package.xml generated with added and modified metadata ---"
            cat package/package.xml   
       - name: Deploying Metadata
