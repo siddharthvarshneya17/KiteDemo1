@@ -33,7 +33,8 @@ jobs:
             args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername
       - name: "Install App and Create Delta"   
         run: |  
-           npm install sfdx-cli 
+           npm install sfdx-cli –global 
+           sfdx –v
            sfdx plugins:install sfdx-git-delta         
            #sudo npm install sfdx-git-delta@latest -g           
            #git config --global user.email "siddharthvarshneya@gmail.com"
