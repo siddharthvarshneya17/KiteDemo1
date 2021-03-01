@@ -36,8 +36,8 @@ jobs:
            sudo npm install sfdx-git-delta@latest -g
            git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
            git fetch --all      
-           git --no-pager diff --name-status ADO-444 origin/Staging
-           sgd --to pr  --from origin/Staging --repo . --output .
+           git --no-pager diff --name-status origin/ADO-444 origin/Staging
+           sgd --to origin/ADO-444  --from origin/Staging --repo . --output .
            echo "--- package.xml generated with added and modified metadata ---"
            cat package/package.xml   
       - name: Deploying Metadata
