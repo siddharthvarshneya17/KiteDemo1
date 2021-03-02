@@ -47,7 +47,6 @@ jobs:
         with:
           args: force:source:deploy -x package/package.xml
       - name: Delete Metadata
-           cat destructiveChanges/destructiveChanges.xml
         uses: forcedotcom/salesforcedx-actions@master
         with:
-          args: force:source:delete -p destructiveChanges
+          args: force:source:delete -m ApexClass:SearchAccountController
