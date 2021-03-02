@@ -45,4 +45,8 @@ jobs:
       - name: Deploying Metadata
         uses: forcedotcom/salesforcedx-actions@master
         with:
-          args: force:source:deploy -x package/package.xml 
+          args: force:source:deploy -x package/package.xml
+      - name: Delete Metadata
+        uses: forcedotcom/salesforcedx-actions@master
+        with:
+          args: force:source:delete -p destructiveChanges
