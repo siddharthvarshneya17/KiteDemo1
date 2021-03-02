@@ -3,6 +3,7 @@
     <types>
         <members>AccountListController</members>
         <members>TestAccountCtrl</members>
+        <members>ContinuationVFController</members>
         <name>ApexClass</name>
     </types>
     <version>50.0</version>
