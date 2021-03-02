@@ -33,10 +33,8 @@ jobs:
       - name: Decrypting Server Key
         shell: bash
         run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K ${{ secrets.DECRYPTION_KEY }} -iv ${{ secrets.DECRYPTION_IV }}
-      - name: Authorizing Org
-        uses: forcedotcom/salesforcedx-actions@master
-        with:
-            args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername --setdefaultdevhubusername --setalias=hub-org
+      - name: 'Authorize'
+        run: sfdx force:auth:jwt:grant --clientid=${{ secrets.TARGET_CONSUMER_KEY }} --username=${{ secrets.TARGET_USER_NAME }} --jwtkeyfile assets/server.key --setdefaultdevhubusername --setalias=hub-org
       - name: "Install App and Create Delta"   
         run: |  
            sudo npm install sfdx-git-delta@latest -g
