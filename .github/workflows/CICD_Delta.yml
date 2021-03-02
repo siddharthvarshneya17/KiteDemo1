@@ -49,4 +49,4 @@ jobs:
       - name: Delete Metadata
         uses: forcedotcom/salesforcedx-actions@master
         with:
-          args: force:source:delete -m ApexClass:SearchAccountController
+          args: force:source:delete -m ApexClass:ctrlAccController
