@@ -1,4 +1,4 @@
-public class ContinuationVFController {//new 1
+public class ContinuationVFController {//new 12
 	 public String requestLabel;    
     public String result {get;set;}
     private static final String LONG_RUNNING_SERVICE_URL = 'https://api.github.com/users/hadley/orgs';
