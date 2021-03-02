@@ -30,7 +30,7 @@ jobs:
       - name: Authorizing Org
         uses: forcedotcom/salesforcedx-actions@master
         with:
-            args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername
+            args: force:auth:jwt:grant --clientid ${{ secrets.TARGET_CONSUMER_KEY }} --jwtkeyfile assets/server.key --username ${{ secrets.TARGET_USER_NAME }} --setdefaultusername --setdefaultdevhubusername --setalias=hub-org
       - name: 'Build and Deploy'
         run: |
            wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
@@ -53,5 +53,5 @@ jobs:
         with:
           args: force:source:deploy -x package/package.xml
       - name: 'Delete Metadata'
-        run: sfdx force:mdapi:deploy -d destructiveChanges --targetusername ${{ secrets.TARGET_USER_NAME }}
+        run: sfdx force:mdapi:deploy -d destructiveChanges --ignorewarnings -w -1
         
