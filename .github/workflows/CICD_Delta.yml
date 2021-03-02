@@ -46,7 +46,6 @@ jobs:
         uses: forcedotcom/salesforcedx-actions@master
         with:
           args: force:source:deploy -x package/package.xml
-      - name: Delete Metadata
-        uses: forcedotcom/salesforcedx-actions@master
-        with:
-          args: force:source:delete -m ApexClass:ctrlAccController
+      - name: convert
+        run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
+        
