@@ -49,7 +49,7 @@ jobs:
            cat package/package.xml
            cat destructiveChanges/destructiveChanges.xml
       - name: 'Convert Metadata'
-        run: sfdx force:source:convert --rootdir=force-app/ --outputdir=convert
+        run: sfdx force:source:convert --manifest=package/package.xml --outputdir=convert
       - name: 'Run Test on Metadata'
         run: sfdx force:mdapi:deploy --deploydir=convert
         
