@@ -53,5 +53,5 @@ jobs:
         with:
           args: force:source:deploy -x package/package.xml
       - name: 'Delete Metadata'
-        run: sfdx force:mdapi:deploy -d destructiveChanges --ignorewarnings -w -1
+        run: sfdx force:mdapi:deploy -d destructiveChanges
         
