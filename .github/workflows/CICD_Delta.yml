@@ -46,10 +46,6 @@ jobs:
            echo "--- package.xml generated with added and modified metadata ---"
            cat package/package.xml
            cat destructiveChanges/destructiveChanges.xml
-      - name: Deploying Metadata
-        uses: forcedotcom/salesforcedx-actions@master
-        with:
-          args: force:source:deploy -x package/package.xml
       - name: 'Delete Metadata'
         run: sfdx force:mdapi:deploy -d destructiveChanges -u hub-org
         
